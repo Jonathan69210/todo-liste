@@ -11,9 +11,9 @@
 
   </article>
 
-  <article *ngIf="todoList == empty">
+  <!-- <article *ngIf="todoList == empty">
     <ion-button id="pencil" class="button" [routerLink]="['/todo']"><ion-icon  name="pencil-outline"></ion-icon></ion-button>
-  </article>
+  </article> -->
 
   <article *ngIf="error">
     <ion-button (click)="reload()"><ion-icon name="refresh-outline"></ion-icon></ion-button>
