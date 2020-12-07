@@ -37,7 +37,7 @@ export class TodoComponent implements OnInit {
     this.formTodo.get("name").dirty;
 
     if (this.formTodo.valid) {
-      //this.router.navigate('/todos/todo-list');
+      this.router.navigate(['list']);
       return this.todoService.post({
         name: this.formTodo.get("name").value,
         description: this.formTodo.get("name").value,
