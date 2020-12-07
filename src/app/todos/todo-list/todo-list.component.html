@@ -7,11 +7,11 @@
 
 <section>
   <article *ngIf="!todoList && !error">
-    <ion-img src="assets/icon/Loading.gif"></ion-img>
+    <img src="assets/icon/Loading.gif">
 
   </article>
 
-  <article >
+  <article *ngIf="todoList == empty">
     <ion-button id="pencil" class="button" [routerLink]="['/todo']"><ion-icon  name="pencil-outline"></ion-icon></ion-button>
   </article>
 
