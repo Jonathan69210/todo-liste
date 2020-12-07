@@ -7,9 +7,9 @@
     padding: 10px;
 }
 .row>.button{
-    margin-top: 3%;
+    margin-top: 2%;
 }
-.row:nth-child(odd){
+.row:nth-child(even){
     background-color:rgb(231, 124, 178);
 }
 #pencil{

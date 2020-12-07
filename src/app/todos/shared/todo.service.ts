@@ -9,6 +9,7 @@ import { environment } from './../../../environments/environment';
 })
 export class TodoService {
 
+  public error: boolean;
   public todoList: Todo[] = [];
 
   constructor(private http: HttpClient) { }
@@ -30,9 +31,12 @@ export class TodoService {
     newTabTodo.push(todo)
     this.put(newTabTodo).subscribe(
       () => {
+        this.error = false;
         this.todoList.push(todo);
       },
-      () => { }
+      () => {
+        this.error = true;
+       }
     );
   }
 
@@ -47,10 +51,13 @@ export class TodoService {
 
     this.put(newTabTodo).subscribe(
       () => {
+        this.error = false;
         const index = this.todoList.indexOf(todo);
         this.todoList.splice(index, 1);
       },
-      () => { }
+      () => { 
+        this.error = true;
+      }
     );
     return todo;
   }
