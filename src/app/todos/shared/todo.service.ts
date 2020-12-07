@@ -38,6 +38,7 @@ export class TodoService {
         this.error = true;
        }
     );
+    return todo;
   }
 
   delete(todo: Todo): Todo {
