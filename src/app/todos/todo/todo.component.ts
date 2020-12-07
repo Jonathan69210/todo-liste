@@ -22,7 +22,6 @@ export class TodoComponent implements OnInit {
       name: ["", Validators.required],
       description: ["", Validators.required],
     });
-    console.log(this.formTodo);
   }
 
   /**
