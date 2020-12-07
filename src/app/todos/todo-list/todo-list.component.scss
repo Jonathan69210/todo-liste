@@ -1,0 +1,24 @@
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid black;
+    padding: 10px;
+}
+.row>.button{
+    margin-top: 3%;
+}
+.row:nth-child(odd){
+    background-color:rgb(231, 124, 178);
+}
+#pencil{
+    font-size: 1.2em;
+    background-color: white;
+    border-radius: 5px;
+}
+article{
+    margin-top: 40px;
+}
+
+

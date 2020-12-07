@@ -1,0 +1,33 @@
+<ion-list-header lines="inset">
+  <ion-label>
+    <h1>Création de tout doux</h1>
+  </ion-label>
+  <ion-button id="liste" [routerLink]="['/todoList']">
+    <ion-icon name="library-outline"></ion-icon>
+  </ion-button>
+</ion-list-header>
+
+<section>
+  <form [formGroup]="formTodo" (ngSubmit)="save()">
+  <ion-item>
+    <ion-label position="floating">Nom</ion-label>
+    <ion-input formControlName="name"></ion-input>
+    <span *ngIf="!formTodo.get('name').valid && formTodo.get('name').dirty">
+      Name is require
+    </span>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Description</ion-label>
+    <ion-textarea formControlName="description"></ion-textarea>
+  </ion-item>
+    <ion-button [routerLink]="['/list']" [disabled]="!this.formTodo.valid" type="submit">Save</ion-button>
+  </form>
+
+
+
+
+
+  <article>
+    
+  </article>
+</section>

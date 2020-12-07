@@ -1,0 +1,20 @@
+
+
+<ion-list-header lines="inset">
+  <ion-label ><h1>Tout doux detail</h1></ion-label>
+  <ion-button id="liste" [routerLink]="['/todoList']"><ion-icon name="library-outline"></ion-icon></ion-button>
+</ion-list-header>
+
+<section>
+  <article *ngIf="!todoDetail">
+    <img src="../../../../../assets/icon/Loading.gif">
+  </article>
+
+  <article>
+    <h2>{{ todoDetail.name }}</h2>
+    <div class="description">
+      <p>{{ todoDetail.description }}</p>
+    </div>
+    
+  </article>
+</section>

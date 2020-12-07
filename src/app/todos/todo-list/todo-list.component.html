@@ -1,0 +1,27 @@
+
+
+<ion-list-header lines="inset">
+  <ion-label ><h1>Tout doux list</h1></ion-label>
+  <ion-button id="pencil" class="button" [routerLink]="['/todo']"><ion-icon  name="pencil-outline"></ion-icon></ion-button>
+</ion-list-header>
+
+<section>
+  <article *ngIf="!todoList && !error">
+    <img src="../../../../../assets/icon/Loading.gif">
+  </article>
+
+  <article *ngIf="!todoList">
+    <ion-button id="pencil" class="button" [routerLink]="['/todo']"><ion-icon  name="pencil-outline"></ion-icon></ion-button>
+  </article>
+
+  <article *ngIf="error">
+    <ion-button (click)="reload()"><ion-icon name="refresh-outline"></ion-icon></ion-button>
+  </article>
+
+  <article>
+    <div *ngFor="let todo of todoList" class="row">
+      <h2><a [routerLink]="['/detail', todo.name]">{{ todo.name }}</a></h2>
+      <ion-button (click)="delete(todo)"><ion-icon name="trash-outline"></ion-icon></ion-button>
+    </div>
+  </article>
+</section>
