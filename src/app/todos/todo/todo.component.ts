@@ -40,7 +40,7 @@ export class TodoComponent implements OnInit {
       this.router.navigate(['list']);
       return this.todoService.post({
         name: this.formTodo.get("name").value,
-        description: this.formTodo.get("name").value,
+        description: this.formTodo.get("description").value,
       });
     }
 
