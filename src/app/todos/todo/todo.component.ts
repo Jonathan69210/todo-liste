@@ -32,9 +32,9 @@ export class TodoComponent implements OnInit {
    */
   public save() {
 
-    this.formTodo.get("name").valid;
-    this.formTodo.get("description").valid;
-    this.formTodo.get("name").dirty;
+    // this.formTodo.get("name").valid;
+    // this.formTodo.get("description").valid;
+    // this.formTodo.get("name").dirty;
 
     if (this.formTodo.valid) {
       this.router.navigate(['list']);
