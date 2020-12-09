@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Todo } from '../shared/todo.model';
 import { environment } from './../../../environments/environment';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
 
-  public error: boolean;
   public todoList: Todo[] = [];
 
   constructor(private http: HttpClient) { }
@@ -19,29 +19,33 @@ export class TodoService {
       headers: new HttpHeaders({
         "secret-key": environment.jsonbin.key
       })
-    });
+    }).pipe(
+      tap(
+        (todoList : Todo[]) => { 
+          this.todoList = todoList;
+         },
+        () => { }
+      )
+    );
+    
   }
 
   post(todo: Todo) {
-
     const newTabTodo = [];
     this.todoList.forEach((item) => {
       newTabTodo.push(item);
     });
     newTabTodo.push(todo)
-    this.put(newTabTodo).subscribe(
-      () => {
-        this.error = false;
+    return this.put(newTabTodo).pipe(
+      tap(
+        ()=> {
         this.todoList.push(todo);
       },
-      () => {
-        this.error = true;
-       }
-    );
-    return todo;
+      () => { }
+    ));
   }
 
-  delete(todo: Todo): Todo {
+  delete(todo: Todo) {
 
     const newTabTodo = [];
     this.todoList.forEach((item) => {
@@ -49,18 +53,15 @@ export class TodoService {
         newTabTodo.push(item);
       }
     });
-
-    this.put(newTabTodo).subscribe(
-      () => {
-        this.error = false;
+    return this.put(newTabTodo).pipe(
+      tap(
+        () => {
         const index = this.todoList.indexOf(todo);
         this.todoList.splice(index, 1);
       },
-      () => { 
-        this.error = true;
-      }
-    );
-    return todo;
+      () => { }
+    ));
+    
   }
 
   put(todoList: Todo[]): Observable<Todo[]> {

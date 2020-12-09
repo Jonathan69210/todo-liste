@@ -11,6 +11,7 @@ import { TodoService } from '../shared/todo.service';
 export class TodoListComponent implements OnInit {
 
   public error: boolean;
+  public disabled: boolean;
   public todoList: Todo[];
 
   constructor(private todoService: TodoService) {
@@ -19,19 +20,26 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit() { }
 
-  delete(todo: Todo) {
-    this.todoService.delete(todo);
+  ondelete(todo: Todo) {
+    this.disabled = true;
+    this.todoService.delete(todo).subscribe(
+      () => {
+        this.disabled = false;
+       },
+      () => { }
+    )
   }
 
   reload() {
     this.todoService.get().subscribe(
       (todoList: Todo[]) => {
         this.error = false;
-        this.todoList = this.todoService.todoList = todoList;
+        this.todoList = todoList;
       },
       () => {
         this.error = true;
       });
   }
+  
 
 }

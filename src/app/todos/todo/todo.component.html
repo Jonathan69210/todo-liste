@@ -20,7 +20,7 @@
     <ion-label position="floating">Description</ion-label>
     <ion-textarea formControlName="description"></ion-textarea>
   </ion-item>
-    <ion-button [disabled]="!this.formTodo.valid" type="submit">Save</ion-button>
+    <ion-button [disabled]="!this.formTodo.valid || disabled" type="submit">Save</ion-button>
   </form>
 
 

@@ -11,6 +11,7 @@ import { TodoService } from '../shared/todo.service';
 export class TodoComponent implements OnInit {
 
   public formTodo: FormGroup;
+  public disabled: boolean;
 
   constructor(
     private todoService: TodoService,
@@ -29,16 +30,20 @@ export class TodoComponent implements OnInit {
    * @param description 
    */
   public save() {
-
+    
     if (this.formTodo.valid) {
-      this.router.navigate(['list']);
-      return this.todoService.post({
+      this.disabled = true;
+      this.todoService.post({
         name: this.formTodo.get("name").value,
         description: this.formTodo.get("description").value,
-      });
-      
-    }
+      }).subscribe(
+        () => {
 
+          this.router.navigate(['list']);
+        },
+        () => { }
+      )
+    }
 
   }
 
